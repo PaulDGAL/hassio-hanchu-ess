@@ -60,13 +60,13 @@ class TestScaffold(unittest.TestCase):
 
     def test_core_files_exist(self) -> None:
         expected = [
-            "custom_components/hanchu-ess/__init__.py",
-            "custom_components/hanchu-ess/config_flow.py",
-            "custom_components/hanchu-ess/const.py",
-            "custom_components/hanchu-ess/coordinator.py",
-            "custom_components/hanchu-ess/manifest.json",
-            "custom_components/hanchu-ess/strings.json",
-            "custom_components/hanchu-ess/translations/en.json",
+            "custom_components/hanchu_ess/__init__.py",
+            "custom_components/hanchu_ess/config_flow.py",
+            "custom_components/hanchu_ess/const.py",
+            "custom_components/hanchu_ess/coordinator.py",
+            "custom_components/hanchu_ess/manifest.json",
+            "custom_components/hanchu_ess/strings.json",
+            "custom_components/hanchu_ess/translations/en.json",
         ]
 
         for rel_path in expected:

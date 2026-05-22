@@ -35,9 +35,9 @@ Requires-Dist: pytest-homeassistant-custom-component; extra == "integration"
    ```bash
    git clone https://github.com/lancedfr/hassio-hanchu-ess.git
    ```
-2. Copy the `custom_components/hanchu-ess` folder into your Home Assistant `config` directory so the path becomes:
+2. Copy the `custom_components/hanchu_ess` folder into your Home Assistant `config` directory so the path becomes:
    ```
-   <config>/custom_components/hanchu-ess/
+   <config>/custom_components/hanchu_ess/
    ```
 3. Restart Home Assistant.
 4. Go to **Settings → Devices & Services → Add Integration**, search for **Hanchu ESS**, and follow the setup wizard.
@@ -125,7 +125,7 @@ Changes made to the work mode, numeric, or time period entities are **staged loc
 ## Project layout
 
 ```
-custom_components/hanchu-ess/   Integration source files
+custom_components/hanchu_ess/   Integration source files
   __init__.py               Entry setup, wires up all coordinators
   config_flow.py            UI config flow (account, password, SN) + re-auth
   const.py                  API URLs, AES/RSA keys, poll intervals, IoT field names
