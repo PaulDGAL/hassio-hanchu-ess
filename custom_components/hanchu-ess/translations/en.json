@@ -1,0 +1,64 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Hanchu ESS",
+        "description": "Enter your Hanchu ESS gateway credentials.",
+        "data": {
+          "name": "Name",
+          "account": "Account (email / username)",
+          "pwd": "Password",
+          "sn": "Device Serial Number (SN)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Hanchu ESS",
+        "description": "Your Hanchu ESS session has expired. Please re-enter your credentials.",
+        "data": {
+          "account": "Account (email / username)",
+          "pwd": "Password",
+          "sn": "Device Serial Number (SN)"
+        }
+      }
+    },
+    "error": {
+      "account_required": "Account must not be empty.",
+      "pwd_required": "Password must not be empty.",
+      "sn_required": "Device serial number must not be empty."
+    },
+    "abort": {
+      "single_instance_allowed": "Only one Hanchu ESS entry is allowed.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "entity": {
+    "select": {
+      "work_mode": {
+        "name": "Work Mode",
+        "state": {
+          "User-defined": "User-defined",
+          "Self-consumption mode": "Self-consumption mode"
+        }
+      }
+    },
+    "number": {
+      "chg_pwr_lmt":        { "name": "Charging Power Maximum" },
+      "dschg_pwr_lmt":      { "name": "Discharge Power Maximum" },
+      "dtu_ac_chg_soc_lmt": { "name": "Grid to Battery Charge Maximum" },
+      "chg_bat_soc_lmt":    { "name": "Maximum Charge SOC" },
+      "dschg_bat_soc_lmt":  { "name": "On-Grid Battery Discharge Minimum" },
+      "off_grid_soc_l":     { "name": "Off-Grid Battery Discharge Minimum" }
+    },
+    "time": {
+      "tct_start_1": { "name": "Charge Period 1 Start" },
+      "tct_end_1":   { "name": "Charge Period 1 End" },
+      "tdt_start_1": { "name": "Discharge Period 1 Start" },
+      "tdt_end_1":   { "name": "Discharge Period 1 End" }
+    },
+    "button": {
+      "read_settings":  { "name": "Read Settings" },
+      "write_settings": { "name": "Write Settings" }
+    }
+  }
+}
+

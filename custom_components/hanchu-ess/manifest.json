@@ -1,0 +1,22 @@
+{
+  "domain": "hanchu",
+  "name": "Hanchu ESS",
+  "version": "0.1.0",
+  "config_flow": true,
+  "documentation": "https://github.com/lancedfr/hassio-hanchu-ess",
+  "issue_tracker": "https://github.com/lancedfr/hassio-hanchu-ess/issues",
+  "codeowners": [
+    "@lancedfr"
+  ],
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "quality_scale": "bronze",
+  "loggers": [
+    "custom_components.hanchu"
+  ],
+  "single_config_entry": true,
+  "requirements": [],
+  "dependencies": [],
+  "after_dependencies": []
+}
+

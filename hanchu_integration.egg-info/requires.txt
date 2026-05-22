@@ -1,0 +1,8 @@
+
+[dev]
+homeassistant>=2024.6.0
+pytest>=8.0
+ruff>=0.6
+
+[integration]
+pytest-homeassistant-custom-component

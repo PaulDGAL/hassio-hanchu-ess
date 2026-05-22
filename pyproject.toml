@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hanchu-integration"
+version = "0.1.0"
+description = "Home Assistant custom integration for the Hanchu ESS PCS energy management system"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+  { name = "Lance", email = "email@email.com" }
+]
+
+[project.optional-dependencies]
+dev = [
+  "homeassistant>=2024.6.0",
+  "pytest>=8.0",
+  "ruff>=0.6"
+]
+# Integration tests require Linux/WSL — fcntl is not available on Windows.
+# Install with: pip install -e ".[dev,integration]"
+integration = [
+  "pytest-homeassistant-custom-component"
+]
+
+[tool.ruff]
+line-length = 300
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
