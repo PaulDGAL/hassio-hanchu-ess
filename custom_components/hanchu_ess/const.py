@@ -49,6 +49,10 @@ IOT_SETTINGS_KEYS: list[str] = [
     IOT_MIN_OFF_GRID_SOC,
     "TCT_START_1", "TCT_END_1",
     "TDT_START_1", "TDT_END_1",
+    "TCT_START_2", "TCT_END_2",
+    "TDT_START_2", "TDT_END_2",
+    "TCT_START_3", "TCT_END_3",
+    "TDT_START_3", "TDT_END_3",
 ]
 
 # Base64-encoded X509 RSA public key used by the official app for pwd encryption.
