@@ -40,6 +40,14 @@ _TIME_DEFS: list[_TimeDef] = [
     _TimeDef("TCT_END_1",   "Charge Period 1 End",      "mdi:clock-end"),
     _TimeDef("TDT_START_1", "Discharge Period 1 Start", "mdi:clock-start"),
     _TimeDef("TDT_END_1",   "Discharge Period 1 End",   "mdi:clock-end"),
+    _TimeDef("TCT_START_2", "Charge Period 2 Start",    "mdi:clock-start"),
+    _TimeDef("TCT_END_2",   "Charge Period 2 End",      "mdi:clock-end"),
+    _TimeDef("TDT_START_2", "Discharge Period 2 Start", "mdi:clock-start"),
+    _TimeDef("TDT_END_2",   "Discharge Period 2 End",   "mdi:clock-end"),
+    _TimeDef("TCT_START_3", "Charge Period 3 Start",    "mdi:clock-start"),
+    _TimeDef("TCT_END_3",   "Charge Period 3 End",      "mdi:clock-end"),
+    _TimeDef("TDT_START_3", "Discharge Period 3 Start", "mdi:clock-start"),
+    _TimeDef("TDT_END_3",   "Discharge Period 3 End",   "mdi:clock-end"),
 ]
 
 

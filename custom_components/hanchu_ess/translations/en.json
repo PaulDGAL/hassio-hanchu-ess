@@ -53,7 +53,15 @@
       "tct_start_1": { "name": "Charge Period 1 Start" },
       "tct_end_1":   { "name": "Charge Period 1 End" },
       "tdt_start_1": { "name": "Discharge Period 1 Start" },
-      "tdt_end_1":   { "name": "Discharge Period 1 End" }
+      "tdt_end_1":   { "name": "Discharge Period 1 End" },
+      "tct_start_2": { "name": "Charge Period 2 Start" },
+      "tct_end_2":   { "name": "Charge Period 2 End" },
+      "tdt_start_2": { "name": "Discharge Period 2 Start" },
+      "tdt_end_2":   { "name": "Discharge Period 2 End" },
+      "tct_start_3": { "name": "Charge Period 3 Start" },
+      "tct_end_3":   { "name": "Charge Period 3 End" },
+      "tdt_start_3": { "name": "Discharge Period 3 Start" },
+      "tdt_end_3":   { "name": "Discharge Period 3 End" }
     },
     "button": {
       "read_settings":  { "name": "Read Settings" },
