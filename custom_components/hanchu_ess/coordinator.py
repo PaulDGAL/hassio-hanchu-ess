@@ -27,14 +27,12 @@ from .const import (
     CONF_SN,
     DATA_DEV_TYPE,
     DATA_MAX_COUNT,
-    DATA_POLL_MINUTES,
     DATA_URL,
     DOMAIN,
     FAST_CHARGE_DISCHARGE_URL,
     IOT_GET_URL,
     IOT_SET_URL,
     IOT_SETTINGS_KEYS,
-    POWER_POLL_MINUTES,
     POWER_URL,
     RSA_PUBLIC_KEY_B64,
     TOKEN_REFRESH_HOURS,
@@ -178,12 +176,13 @@ class HanchuDataCoordinator(DataUpdateCoordinator[dict]):
         hass: HomeAssistant,
         entry: ConfigEntry,
         auth: HanchuAuthCoordinator,
+        update_interval_seconds: int,
     ) -> None:
         super().__init__(
             hass,
             _LOGGER,
             name=f"{DOMAIN}_data",
-            update_interval=timedelta(minutes=DATA_POLL_MINUTES),
+            update_interval=timedelta(seconds=update_interval_seconds),
         )
         self._entry = entry
         self._auth = auth
@@ -251,12 +250,13 @@ class HanchuPowerCoordinator(DataUpdateCoordinator[dict]):
         hass: HomeAssistant,
         entry: ConfigEntry,
         auth: HanchuAuthCoordinator,
+        update_interval_seconds: int,
     ) -> None:
         super().__init__(
             hass,
             _LOGGER,
             name=f"{DOMAIN}_power",
-            update_interval=timedelta(minutes=POWER_POLL_MINUTES),
+            update_interval=timedelta(seconds=update_interval_seconds),
         )
         self._entry = entry
         self._auth = auth

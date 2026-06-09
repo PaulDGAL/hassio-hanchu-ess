@@ -37,6 +37,10 @@ When prompted, enter:
 | **Account** | Your Hanchu ESS gateway account (email or username) |
 | **Password** | Your Hanchu ESS gateway password |
 | **Device Serial Number (SN)** | The SN shown on the homepage of the official Hanchu ESS site or app |
+| **Energy data poll interval (seconds)** | How often to fetch yearly energy totals (default: `1800`) |
+| **Live power poll interval (seconds)** | How often to fetch live power and battery data (default: `600`) |
+
+Poll intervals can also be changed after setup without removing the integration: go to **Settings → Devices & Services → Hanchu ESS → Configure**.
 
 ---
 
@@ -44,7 +48,7 @@ When prompted, enter:
 
 ### Yearly energy totals (kWh)
 
-Polled every **30 minutes** from the `historyStaticsChart` endpoint. Values reset to 0 on January 1st each year.
+Polled every **1800 seconds** (30 minutes by default, configurable) from the `historyStaticsChart` endpoint. Values reset to 0 on January 1st each year.
 
 | Sensor | Description |
 |--------|-------------|
@@ -57,7 +61,7 @@ Polled every **30 minutes** from the `historyStaticsChart` endpoint. Values rese
 
 ### Live power flows (W)
 
-Polled every **10 minutes** from the `powerChart` endpoint.
+Polled every **600 seconds** (10 minutes by default, configurable) from the `powerChart` endpoint.
 
 | Sensor | Description |
 |--------|-------------|
@@ -105,10 +109,18 @@ All configuration entities appear under the **Configuration** section of the Han
 
 | Entity | Description |
 |--------|-------------|
-| **Charge Period 1 Start** | Start time of the first daily charge window |
-| **Charge Period 1 End** | End time of the first daily charge window |
-| **Discharge Period 1 Start** | Start time of the first daily discharge window |
-| **Discharge Period 1 End** | End time of the first daily discharge window |
+| **Charge Period 1 Start**    | Start time of the first daily charge window     |
+| **Charge Period 1 End**      | End time of the first daily charge window       |
+| **Discharge Period 1 Start** | Start time of the first daily discharge window  |
+| **Discharge Period 1 End**   | End time of the first daily discharge window    |
+| **Charge Period 2 Start**    | Start time of the second daily charge window    |
+| **Charge Period 2 End**      | End time of the second daily charge window      |
+| **Discharge Period 2 Start** | Start time of the second daily discharge window |
+| **Discharge Period 2 End**   | End time of the second daily discharge window   |
+| **Charge Period 3 Start**    | Start time of the third daily charge window     |
+| **Charge Period 3 End**      | End time of the third daily charge window       |
+| **Discharge Period 3 Start** | Start time of the third daily discharge window  |
+| **Discharge Period 3 End**   | End time of the third daily discharge window    |
 
 Time values are stored as seconds-since-midnight by the PCS and displayed as HH:MM in Home Assistant.
 
@@ -164,16 +176,16 @@ data:
 
 ## What is included
 
-- UI-only setup using a config flow — collects account, password, and device serial number
+- UI-only setup using a config flow — collects account, password, device serial number, and configurable poll intervals (editable after setup via the **Configure** button)
 - Four `DataUpdateCoordinator` classes in `coordinator.py`:
   - `HanchuAuthCoordinator` — refreshes the OAuth token every hour
-  - `HanchuDataCoordinator` — polls yearly energy statistics every 30 minutes
-  - `HanchuPowerCoordinator` — polls live power flows and battery SOC every 10 minutes
+  - `HanchuDataCoordinator` — polls yearly energy statistics (default every 1800 s, configurable)
+  - `HanchuPowerCoordinator` — polls live power flows and battery SOC (default every 600 s, configurable)
   - `HanchuSettingsCoordinator` — on-demand reader/writer for work mode settings (no auto-poll)
 - **15 sensor entities** (6 energy + 7 live power + 1 battery SOC)
 - **1 select entity** — Work Mode (Configuration category)
 - **6 number entities** — power (0–5000 W) and SOC limits (0–100 %, whole numbers only) (Configuration category)
-- **4 time entities** — charge/discharge period 1 boundaries (Configuration category)
+- **12 time entities** — charge/discharge period 1–3 start/end times (Configuration category)
 - **2 button entities** — **Read Settings** (fetches via `iotGet`) and **Write Settings** (sends only changed values via `iotSet`)
 - **1 service** — `hanchu_ess.fast_charge_discharge` (fast charge / discharge control)
 - Re-authentication flow — credentials can be updated via the UI without removing the entry
@@ -185,7 +197,7 @@ data:
 ```
 custom_components/hanchu_ess/   Integration source files
   __init__.py               Entry setup, wires up all coordinators
-  config_flow.py            UI config flow (account, password, SN) + re-auth
+  config_flow.py            UI config flow (account, password, SN, poll intervals) + re-auth + options flow
   const.py                  API URLs, AES/RSA keys, poll intervals, IoT field names
   coordinator.py            Auth, data, power, and settings coordinators
   sensor.py                 Sensor platform — 6 energy + 7 live power + 1 battery SOC
