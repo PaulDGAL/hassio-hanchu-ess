@@ -11,11 +11,11 @@ REQUIRED_FILES = [
     ROOT / "hacs.json",
     ROOT / "README.md",
     ROOT / "pyproject.toml",
-    ROOT / "custom_components" / "hanchu" / "manifest.json",
-    ROOT / "custom_components" / "hanchu" / "__init__.py",
-    ROOT / "custom_components" / "hanchu" / "config_flow.py",
-    ROOT / "custom_components" / "hanchu" / "coordinator.py",
-    ROOT / "custom_components" / "hanchu" / "sensor.py",
+    ROOT / "custom_components" / "hanchu_ess" / "manifest.json",
+    ROOT / "custom_components" / "hanchu_ess" / "__init__.py",
+    ROOT / "custom_components" / "hanchu_ess" / "config_flow.py",
+    ROOT / "custom_components" / "hanchu_ess" / "coordinator.py",
+    ROOT / "custom_components" / "hanchu_ess" / "sensor.py",
 ]
 
 
@@ -26,7 +26,7 @@ def _check_exists() -> None:
 
 
 def _check_manifest() -> None:
-    manifest_path = ROOT / "custom_components" / "hanchu" / "manifest.json"
+    manifest_path = ROOT / "custom_components" / "hanchu_ess" / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
     required_keys = {

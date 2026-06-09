@@ -225,7 +225,7 @@ def _make_data_coordinator(token: str | None = "test.jwt.token", sn: str = "TEST
         "homeassistant.helpers.update_coordinator.DataUpdateCoordinator.__init__",
         _stub_super,
     ):
-        coord = HanchuDataCoordinator(hass, entry, auth)
+        coord = HanchuDataCoordinator(hass, entry, auth, 1800)
 
     return coord
 
@@ -451,7 +451,7 @@ def _make_power_coordinator(token: str | None = "test.jwt.token", sn: str = "TES
         "homeassistant.helpers.update_coordinator.DataUpdateCoordinator.__init__",
         _stub_super,
     ):
-        coord = HanchuPowerCoordinator(hass, entry, auth)
+        coord = HanchuPowerCoordinator(hass, entry, auth, 600)
 
     return coord
 

@@ -8,7 +8,9 @@
           "name": "Name",
           "account": "Account (email / username)",
           "pwd": "Password",
-          "sn": "Device Serial Number (SN)"
+          "sn": "Device Serial Number (SN)",
+          "data_poll_seconds": "Energy data poll interval (seconds)",
+          "power_poll_seconds": "Live power poll interval (seconds)"
         }
       },
       "reauth_confirm": {
@@ -29,6 +31,20 @@
     "abort": {
       "single_instance_allowed": "Only one Hanchu ESS entry is allowed.",
       "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling intervals",
+        "data": {
+          "data_poll_seconds": "Energy data poll interval (seconds)",
+          "power_poll_seconds": "Live power poll interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "poll_too_short": "Interval is too short (minimum 60 s for data, 30 s for power)."
     }
   },
   "entity": {

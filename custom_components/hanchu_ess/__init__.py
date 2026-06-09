@@ -10,7 +10,13 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant, ServiceCall
 
-from .const import DOMAIN
+from .const import (
+    CONF_DATA_POLL_SECONDS,
+    CONF_POWER_POLL_SECONDS,
+    DATA_POLL_SECONDS,
+    DOMAIN,
+    POWER_POLL_SECONDS,
+)
 from .coordinator import (
     HanchuAuthCoordinator,
     HanchuDataCoordinator,
@@ -40,8 +46,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: HanchuConfigEntry) -> bo
     auth_coordinator = HanchuAuthCoordinator(hass, entry)
     await auth_coordinator.async_config_entry_first_refresh()
 
-    data_coordinator = HanchuDataCoordinator(hass, entry, auth_coordinator)
-    power_coordinator = HanchuPowerCoordinator(hass, entry, auth_coordinator)
+    data_poll = (
+        entry.options.get(CONF_DATA_POLL_SECONDS)
+        or entry.data.get(CONF_DATA_POLL_SECONDS)
+        or DATA_POLL_SECONDS
+    )
+    power_poll = (
+        entry.options.get(CONF_POWER_POLL_SECONDS)
+        or entry.data.get(CONF_POWER_POLL_SECONDS)
+        or POWER_POLL_SECONDS
+    )
+    data_coordinator = HanchuDataCoordinator(hass, entry, auth_coordinator, data_poll)
+    power_coordinator = HanchuPowerCoordinator(hass, entry, auth_coordinator, power_poll)
     settings_coordinator = HanchuSettingsCoordinator(hass, entry, auth_coordinator)
     await asyncio.gather(
         data_coordinator.async_config_entry_first_refresh(),
